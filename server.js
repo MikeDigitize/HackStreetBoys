@@ -29,18 +29,55 @@ io.on("connection", function(socket) {
     	if(!docs.length) {
 			insertManagers(); 
 		}    
-    });
-
-    db.staff.find(function(err, docs) {    
-    	if(!docs.length) {
-			insertUsers(); 
-		}    
-    });
+    });    
 
 })();
 
 function insertUsers() {
-	console.log("insert staff here");
+	var users = [{
+		name : "Niall Hanlon",
+		managerId : null,
+		managerName : "Colin Steele"
+	}, {
+		name : "Lee Cooper",
+		managerId : null,
+		managerName : "Ste Ashworth"
+	}, {
+		name : "Kobi Thompson",
+		managerId : null,
+		managerName : "Michael Chadwick"
+	}, {
+		name : "Dave Lawson",
+		managerId : null,
+		managerName : "Ben Ely"
+	}, {
+		name : "Andrew Kircaldy",
+		managerId : null,
+		managerName : "Christian Tute"
+	}, {
+		name : "Yossi",
+		managerId : null,
+		managerName : "Colin Steele"
+	}, {
+		name : "John Roberts",
+		managerId : null,
+		managerName : "Ste Ashworth"
+	}, {
+		name : "Steve Caunce",
+		managerId : null,
+		managerName : "Michael Chadwick"
+	}, {
+		name : "David Wilkinson",
+		managerId : null,
+		managerName : "Ben Ely"
+	}, {
+		name : "David Atherton",
+		managerId : null,
+		managerName : "Christian Tute"
+	}];
+	db.staff.insert(users, function(e, record) {
+		console.log(record);
+	});
 }
 
 function insertManagers() {
@@ -59,7 +96,11 @@ function insertManagers() {
 	}, {
 		name : "Christian Tute",
 		location : "UK BLT"
-	}], function( err, record ) {    
-    	err ? console.log( err ) : console.log( 'Success: ', record );
+	}], function(err, record) {    
+	    	db.staff.find(function(err, docs) {    
+	    	if(!docs.length) {
+				insertUsers(); 
+			}    
+	    });
     });
 }
