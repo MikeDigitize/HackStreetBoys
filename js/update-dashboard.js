@@ -1,6 +1,7 @@
 class UpdateDashboard {
 	
 	constructor() {
+		this.name = document.querySelector(".playerName");
 		this.callsToday = document.querySelector("#callsToday");   
 	    this.salesToday = document.querySelector("#salesToday");
 	    this.warrantiesToday = document.querySelector("#warrantiesToday");
@@ -16,7 +17,7 @@ class UpdateDashboard {
 	    this.teamWarrantiesLastWeek = document.querySelector("#teamWarrantiesLastWeek");
 	}
 
-	updateStaff(data) {
+	updateStaff(data) { 
 		
 		this.callsToday.children[0].innerHTML = data.call.today;
 	    this.callsToday.children[1].innerHTML = data.call.lastWeekDay;
@@ -70,6 +71,10 @@ class UpdateDashboard {
 	    this.teamWarrantiesLastWeek.children[1].innerHTML = data.warrenty.lastWeekWow;
 	    this.updateBoxState(data.warrenty.wow, data.warrenty.lastWeekWow, this.teamWarrantiesLastWeek); 
 
+	}
+
+	setName(name) {
+		this.name.innerHTML = name;
 	}
 
 	updateBoxState(now, previous, container) {
