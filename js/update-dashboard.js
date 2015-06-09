@@ -78,6 +78,9 @@ class UpdateDashboard {
 	}
 
 	updateBoxState(now, previous, container) {
+		container.classList.remove("green");
+		container.classList.remove("red");
+		
 		if(now < previous) {
 	        container.classList.add("red");
 	    }

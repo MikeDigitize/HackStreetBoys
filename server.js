@@ -30,4 +30,3 @@ sockets(io, db, verify);
 
 var dbSetup = require("./custom-modules/db-setup.js");
 dbSetup(db);
-
