@@ -41,16 +41,16 @@ body {
         @include font-size(15);
     }
     .largeNumber {
-        margin-top: 8px;
+        margin-top: 5px;
         font-family: $aoFont;
-        @include font-size(35);
+        @include font-size(40);
         font-weight: 600;
         padding: 0;
     }
     .smallNumber {
         margin-bottom: 2px;
         font-family: $aoFont;
-        @include font-size(15);
+        @include font-size(20);
         font-weight: 600;
         text-align: right;
         padding: 0;
@@ -58,6 +58,31 @@ body {
     .red,
     .green {
         height: 80px;
+    }
+    .orange {
+        padding-top: 10px;
+        background-color: #3fc2bd;
+        font-family: $aoFont;
+        @include font-size(20);
+        i {
+            vertical-align: middle;
+            @include font-size(16);
+            display: inline-block;
+            margin-top: -2px;
+        }
+        a {
+            color: inherit;
+            display: block;
+            padding-bottom: 10px;
+            &:hover {
+                text-decoration: none;
+            }
+            div {
+                display: inline-block;
+                text-align: left;
+                padding-left: 10px;
+            }
+        }
     }
     .car {
         img {
