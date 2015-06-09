@@ -1,25 +1,38 @@
 {
-	"name": "AOValuesHack",
-	"version": "0.0.1",
-	"description": "",
-	"main": "src/js/app.js",
-	"author": "Hackstreet Boys",
-	"license": "MIT",
-	"dependencies": {
-		"bootstrap": "latest"
-	},
-	"devDependencies": {
-		"autoprefixer-loader": "1.2.0",
-		"babel-core": "5.2.6",
-		"babel-loader": "5.0.0",
-		"css-loader": "0.12.0",
-		"file-loader": "0.8.1",
-		"html-webpack-plugin": "1.3.0",
-		"json-loader": "0.5.1",
-		"sass": "latest",
-		"sass-loader": "latest",
-		"raw-loader": "0.5.1",
-		"style-loader": "0.12.1",
-		"webpack": "1.8.11"
-	}
+  "name": "HackStreetBoys",
+  "version": "0.0.1",
+  "description": "AO Warranty Game!",
+  "main": "server.js",
+  "scripts": {
+    "test": "tests.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MikeDigitize/HackStreetBoys.git"
+  },
+  "keywords": [
+    "AO"
+  ],
+  "author": "Ben, Mike, Chris, Ste and Col!",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MikeDigitize/HackStreetBoys/issues"
+  },
+  "homepage": "https://github.com/MikeDigitize/HackStreetBoys",
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "del": "^1.2.0",
+    "express": "^4.12.4",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-minify-css": "^1.1.6",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.1",
+    "gulp-uglify": "^1.2.0",
+    "socket.io": "^1.3.5",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }
