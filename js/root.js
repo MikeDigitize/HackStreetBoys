@@ -1,11 +1,13 @@
 import Login from "./login";
 import Socket from "./sockets";
+import UpdateDashboard from "./update-dashboard";
 
 class AOWarranties {
 
   constructor() {
     this.socket = new Socket();
     this.login = new Login(this.socket);
+    this.dashUpdate = new UpdateDashboard();
     this.authenticateLogin();
   }
 
@@ -17,13 +19,13 @@ class AOWarranties {
       }
       else {
         this.socket.send("login-complete", user);
-        this.socket.receive("staffData", this.inputStaffCallData.bind(this));
+        this.socket.receive("staffData", this.displayStaffData.bind(this));
       }
     }
   }
 
-  inputStaffCallData(data) {
-    console.log(data);
+  displayStaffData(data) {
+    this.dashUpdate.update(data);
   }
 
 }
