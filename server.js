@@ -5,33 +5,71 @@ var io = require("socket.io")(server);
 
 var ObjectId = require('mongodb').ObjectID;
 var databaseUrl = "mongodb://localhost:27017/callcentre";
-var collections = ["staff", "managers"];
+var collections = ["staff", "managers", "calls"];
 var db = require("mongojs").connect( databaseUrl, collections );
-
 
 server.listen(1337);
 app.use(express.static(__dirname + "/public" ));
 
 io.on("connection", function(socket) {
-
-    console.log("a user connected", socket.id);
     io.to(socket.id).emit("userid", socket.id);
 
     socket.on("disconnect", function(){
         console.log("user disconnected", socket.id);
     });
-
 });
 
 (function dbSetUp() {
-
 	db.managers.find(function(err, docs) {    
     	if(!docs.length) {
 			insertManagers(); 
 		}    
-    });    
-
+    });
 })();
+
+function insertCalls() {
+	var calls = [{
+		callerId: null,
+		caller: "Niall Hanlon",
+		warrentyQty: 0,
+		productQty: 0,
+		datestamp: "Tue Jun 09 2015 11:44:41"
+	}, {
+		callerId: null,
+		caller: "Niall Hanlon",
+		warrentyQty: 1,
+		productQty: 1,
+		datestamp: "Tue Jun 09 2015 11:50:40"
+	}, {
+		callerId: null,
+		caller: "Kobi Thompson",
+		warrentyQty: 1,
+		productQty: 1,
+		datestamp: "Tue Jun 09 2015 10:10:15"
+	}, {
+		callerId: null,
+		caller: "Kobi Thompson",
+		warrentyQty: 1,
+		productQty: 1,
+		datestamp: "Tue Jun 09 2015 10:20:10"
+	}, {
+		callerId: null,
+		caller: "Kobi Thompson",
+		warrentyQty: 1,
+		productQty: 1,
+		datestamp: "Tue Jun 09 2015 10:350:45"
+	}, {
+		callerId: null,
+		caller: "Kobi Thompson",
+		warrentyQty: 1,
+		productQty: 1,
+		datestamp: "Tue Jun 09 2015 10:43:23"
+	}];
+
+	db.calls.insert(calls, function(e, record) {
+		console.log('Data successfully entered');
+	});
+}
 
 function insertUsers() {
 	var users = [{
@@ -75,13 +113,18 @@ function insertUsers() {
 		managerId : null,
 		managerName : "Christian Tute"
 	}];
+
 	db.staff.insert(users, function(e, record) {
-		console.log(record);
+		db.calls.find(function(err, docs) {    
+	    	if(!docs.length) {
+				insertCalls();
+			}    
+	    });
 	});
 }
 
 function insertManagers() {
-	db.managers.insert([{
+	var managers = [{
 		name : "Colin Steele",
 		location : "UK BLT"
 	}, {
@@ -96,8 +139,10 @@ function insertManagers() {
 	}, {
 		name : "Christian Tute",
 		location : "UK BLT"
-	}], function(err, record) {    
-	    	db.staff.find(function(err, docs) {    
+	}];
+
+	db.managers.insert(managers, function(err, record) {    
+	    db.staff.find(function(err, docs) {    
 	    	if(!docs.length) {
 				insertUsers(); 
 			}    
