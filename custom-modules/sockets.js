@@ -8,8 +8,8 @@ function socketStart(io, database, verify) {
 		var id = socket.id;
 	    io.to(socket.id).emit("userid", socket.id);
 
-	    socket.on("login-complete", function(data) {
-	    	var staffMember = new Staff(data.username, database);
+	    socket.on("login-complete", function(username) {
+	    	var staffMember = new Staff(username, database);
 
 			staffMember.getManagerName(function(name) {
 				var memberManager = new Manager(name, database);
