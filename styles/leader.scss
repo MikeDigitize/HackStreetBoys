@@ -1,0 +1,76 @@
+@function calculateRem($size) {
+    $remSize: $size / 16;
+    @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+    font-size: ($size * 1px);
+    font-size: calculateRem($size);
+}
+
+$aoFont: "Ao Oz";
+$grey: #3c4043;
+$red: #ef4c4d;
+$green: #7fba24;
+html {
+    font-size: 100%;
+}
+
+body {
+    background-color: $grey;
+}
+
+#leaderApp {
+    text-align: center;
+    color: white;
+    line-height: 1;
+    .headerRow {
+        margin-top: 15px;
+        margin-bottom: 0 !important;
+    }
+    h1 {
+        line-height: 0.9;
+        color: inherit;
+    }
+    .row {
+        margin-bottom: 20px;
+    }
+    .podTitles {
+        margin-bottom: 10px;
+        font-family: arial;
+        @include font-size(15);
+    }
+    .largeNumber {
+        margin-top: 8px;
+        font-family: $aoFont;
+        @include font-size(35);
+        font-weight: 600;
+        padding: 0;
+    }
+    .smallNumber {
+        margin-bottom: 2px;
+        font-family: $aoFont;
+        @include font-size(15);
+        font-weight: 600;
+        text-align: right;
+        padding: 0;
+    }
+    .red,
+    .green {
+        height: 80px;
+    }
+    .car {
+        img {
+            height: auto;
+            width: 100px;
+            vertical-align: top;
+            margin-top: -15px;
+        }
+        p {
+            display: block;
+            margin-top: 10px;
+            font-family: $aoFont;
+            @include font-size(16);
+        }
+    }
+}
