@@ -4,6 +4,14 @@
 	<title>App</title>
 </head>
 <body>
+
+<script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="js/root.min.js"></script>
+<script type="text/javascript">
+	var socket = io();
+	socket.on("userid", function(data) {
+	    console.log("socket id", data);
+	});
+</script>
 </body>
 </html>
