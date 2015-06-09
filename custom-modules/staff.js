@@ -113,6 +113,30 @@ Staff.prototype.getManagerName = function(callback) {
 };
 
 // Dashboard - calls
+Staff.prototype.getCallData = function(callback) {
+	if (typeof callback === 'function') {
+		var data = {};
+
+		this.getTodaysCalls(function(today) {
+			data['today'] = today.length;
+
+			this.getLastWeeksDayCalls(function(lastWeekDay) {
+				data['lastWeekDay'] = lastWeekDay.length;
+
+				this.getWoWCalls(function(wow) {
+					data['wow'] = wow.length;
+
+					this.getLastWeeksWoWCalls(function(lastWeekWow) {
+						data['lastWeekWow'] = lastWeekWow.length;
+
+						callback(data);
+					});
+				}.bind(this));
+			}.bind(this));
+		}.bind(this));
+	}
+};
+
 Staff.prototype.getTodaysCalls = function(callback) {
 	if (typeof callback === 'function') {
 		this.getCalls(new Date(), callback);
@@ -155,6 +179,30 @@ Staff.prototype.getLastWeeksWoWCalls = function(callback) {
 };
 
 // Dashboard - sales
+Staff.prototype.getSaleData = function(callback) {
+	if (typeof callback === 'function') {
+		var data = {};
+
+		this.getTodaysSaleCalls(function(today) {
+			data['today'] = today.length;
+
+			this.getLastWeeksDaySaleCalls(function(lastWeekDay) {
+				data['lastWeekDay'] = lastWeekDay.length;
+
+				this.getWoWSaleCalls(function(wow) {
+					data['wow'] = wow.length;
+
+					this.getLastWeeksWoWSaleCalls(function(lastWeekWow) {
+						data['lastWeekWow'] = lastWeekWow.length;
+
+						callback(data);
+					});
+				}.bind(this));
+			}.bind(this));
+		}.bind(this));
+	}
+};
+
 Staff.prototype.getTodaysSaleCalls = function(callback) {
 	if (typeof callback === 'function') {
 		this.getSaleCalls(new Date(), callback);
@@ -197,6 +245,30 @@ Staff.prototype.getLastWeeksWoWSaleCalls = function(callback) {
 };
 
 // Dashboard - warrenties
+Staff.prototype.getWarrentyData = function(callback) {
+	if (typeof callback === 'function') {
+		var data = {};
+
+		this.getTodaysWarrentyCalls(function(today) {
+			data['today'] = today.length;
+
+			this.getLastWeeksDayWarrentyCalls(function(lastWeekDay) {
+				data['lastWeekDay'] = lastWeekDay.length;
+
+				this.getWoWWarrentyCalls(function(wow) {
+					data['wow'] = wow.length;
+
+					this.getLastWeeksWoWWarrentyCalls(function(lastWeekWow) {
+						data['lastWeekWow'] = lastWeekWow.length;
+
+						callback(data);
+					});
+				}.bind(this));
+			}.bind(this));
+		}.bind(this));
+	}
+};
+
 Staff.prototype.getTodaysWarrentyCalls = function(callback) {
 	if (typeof callback === 'function') {
 		this.getWarrentyCalls(new Date(), callback);
