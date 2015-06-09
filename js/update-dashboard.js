@@ -10,6 +10,10 @@ class UpdateDashboard {
 	    this.warrantiesLastWeek = document.querySelector("#warrantiesLastWeek");
 	}
 
+	updateTeamData(data) { 
+
+	}
+
 	updateStaffData(data) { 
 		
 		this.callsToday.children[0].innerHTML = data.call.today;

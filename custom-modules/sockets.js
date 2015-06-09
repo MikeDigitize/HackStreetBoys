@@ -13,23 +13,15 @@ function socketStart(io, database, verify) {
 
 			staffMember.getManagerName(function(name) {
 				var memberManager = new Manager(name, database);
-			});
 
-			var staffData = {};
-
-			staffMember.getCallData(function(data) {
-				staffData['call'] = data;
-
-				staffMember.getSaleData(function(data) {
-					staffData['sale'] = data;
-
-					staffMember.getWarrentyData(function(data) {
-						staffData['warrenty'] = data;
-
-						io.to(socket.id).emit("staffData", staffData);
-					});
+				memberManager.getTeamData(function(teamData) {
+					io.to(socket.id).emit("teamData", teamData);
 				});
 			});
+
+			staffMember.getAllData(function(staffData) {
+				io.to(socket.id).emit("staffData", staffData);
+			})
 	    });
 
 	    socket.on("verify-login", function(data) {

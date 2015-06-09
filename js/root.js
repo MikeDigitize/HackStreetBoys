@@ -21,12 +21,17 @@ class AOWarranties {
         this.socket.send("login-complete", user);
         this.dashUpdate.setName(user);
         this.socket.receive("staffData", this.displayStaffData.bind(this));
+        this.socket.receive("teamData", this.displayTeamData.bind(this));
       }
     }
   }
 
   displayStaffData(data) {
     this.dashUpdate.updateStaffData(data);
+  }
+
+  displayTeamData(data) {
+    this.dashUpdate.updateTeamData(data);
   }
 
 }
