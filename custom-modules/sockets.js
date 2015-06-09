@@ -8,35 +8,36 @@ function socketStart(io, database, verify) {
 		var id = socket.id;
 	    io.to(socket.id).emit("userid", socket.id);
 
-	    var Niall = new Staff("Niall Hanlon", database);
+	    socket.on("login-complete", function(data) {
+	    	var staffMember = new Staff(data.username, database);
 
-	    // NIALL'S MANAGER
-		Niall.getManagerName(function(name) {
-			var NiallsManager = new Manager(name, database);
-		});
-	    
-	    // CALLS FOR NIALL
-	    Niall.getCallData(function(data) {
-	    	io.to(socket.id).emit("numCalls", data);
+			staffMember.getManagerName(function(name) {
+				var memberManager = new Manager(name, database);
+			});
+
+			var staffData = {};
+
+			staffMember.getCallData(function(data) {
+				staffData['call'] = data;
+
+				staffMember.getSaleData(function(data) {
+					staffData['sale'] = data;
+
+					staffMember.getWarrentyData(function(data) {
+						staffData['warrenty'] = data;
+
+						io.to(socket.id).emit("staffData", staffData);
+					});
+				});
+			});
 	    });
 
-	    // SALES FOR NIALL
-	    Niall.getSaleData(function(data) {
-	    	io.to(socket.id).emit("numSales", data);
-	    });
-
-	    // WARRENTY SALES FOR NIALL
-	    Niall.getWarrentyData(function(data) {
-	    	io.to(socket.id).emit("numWarrenty", data);
-	    });
-
-	    socket.on("verify-login", function(data){
-	    	console.log("verify data!", data);
+	    socket.on("verify-login", function(data) {
 	    	new verify(data, socket.id, io, database)();
 	    });
 
-	    socket.on("disconnect", function(){
-	        console.log("user disconnected", socket.id);
+	    socket.on("disconnect", function() {
+	        // do nothing
 	    });
 
 	});
