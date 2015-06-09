@@ -2,13 +2,10 @@ class Sockets {
 	
 	constructor() {		
 		let socket = io();
-		
         socket.on("userid", this.setSocketId.bind(this));
-
         socket.on("numCalls", this.logCalls.bind(this));
         socket.on("numSales", this.logCalls.bind(this));
         socket.on("numWarrenty", this.logCalls.bind(this));
-
         this.events = [];
 	}
 

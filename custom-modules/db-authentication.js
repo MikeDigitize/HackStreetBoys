@@ -1,12 +1,11 @@
 function authenticate(name, id, io, database) {
 	return function() {
-		console.log(name)
 		database.staff.find({ name : name }, function(err, docs) {    
 	    	if(!docs.length) {
-				io.to(id).emit("verification", false);
+				io.to(id).emit("verification", { verified: false });
 			}    
 			else {
-				io.to(id).emit("verification", true);
+				io.to(id).emit("verification", { verified: true, user : name });
 			}
 	    });
 	}

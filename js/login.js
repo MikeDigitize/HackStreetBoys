@@ -5,6 +5,7 @@ class Login {
 		if(login) {
 			login.addEventListener("submit", e => {
 				e.preventDefault();
+				console.log("hi")
 				var name = document.querySelector("#username");
 				this.verify(name.value, socket);
 			}, false);
@@ -16,8 +17,9 @@ class Login {
 		socket.receive("verification", this.receiveVerification.bind(this));
 	}
 
-	receiveVerification(isVerified) {
-		if(isVerified) {
+	receiveVerification(data) {
+		if(data.verified) {
+			window.localStorage.setItem("username", data.user);
 			window.location = "app.html";
 		}
 	}
