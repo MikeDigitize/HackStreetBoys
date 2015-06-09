@@ -5,11 +5,7 @@ class AOWarranties {
 
   constructor() {
     this.socket = new Socket();
-  }
-
-  login(name) {
-    let login = new Login();
-    login.verify(name, this.socket);
+    this.login = new Login(this.socket);
   }
 
 }
