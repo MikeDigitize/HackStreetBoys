@@ -18,8 +18,6 @@ html {
 
 body {
     background-color: $grey;
-    padding: 0;
-    margin: 0;
 }
 
 #salesApp {
@@ -40,6 +38,7 @@ body {
     }
     .playerName {
         @include font-size(60);
+        color: #c6c6c8;
         margin-top: -15px;
         margin-bottom: 25px;
     }
@@ -83,7 +82,7 @@ body {
 .podTitles {
     margin-bottom: 10px;
     font-family: arial;
-    @include font-size(20);
+    @include font-size(30);
 }
 
 .largeNumber {
@@ -125,12 +124,13 @@ body {
 }
 
 .powerLabel {
-    margin-top: 30px;
-    @include font-size(40);
+    margin-top: 40px;
+    @include font-size(30);
     text-align: left;
 }
 
 .power {
+    padding-left: 0;
     list-style-type: none;
     li {
         display: inline;
