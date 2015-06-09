@@ -1,3 +1,5 @@
+import AutoUpdate from "./auto-update-dash";
+
 class UpdateDashboard {
 	
 	constructor() {
@@ -41,7 +43,16 @@ class UpdateDashboard {
 
 	    this.warrantiesLastWeek.children[0].innerHTML = data.warrenty.wow;
 	    this.warrantiesLastWeek.children[1].innerHTML = data.warrenty.lastWeekWow;
-	    this.updateBoxState(data.warrenty.wow, data.warrenty.lastWeekWow, this.warrantiesLastWeek);    
+	    this.updateBoxState(data.warrenty.wow, data.warrenty.lastWeekWow, this.warrantiesLastWeek);   
+
+	    let update = new AutoUpdate(this.callsToday, 
+	    	this.salesToday, 
+	    	this.warrantiesToday,
+	    	this.callsLastWeek,
+	    	this.salesLastWeek,
+	    	this.warrantiesLastWeek);
+	    
+	    update.updateIndividualStats(); 
 
 	}
 
