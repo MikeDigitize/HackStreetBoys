@@ -13,7 +13,8 @@ class AutoUpdate {
 		this.callsThisWeek = twcalls.children[0];
 		this.salesThisWeek = twsales.children[0];
 		this.warrantiesThisWeek = twwarranties.children[0];
-		this.currentPos = 1;
+		this.currentIndividualPos = 1;
+		this.currentTeamPos = 2;
 		this.dashboard = dashboard;
 	}
 
@@ -21,7 +22,7 @@ class AutoUpdate {
 
 		let random = Math.floor(Math.random() * 5000) + 1;	
 		let positions = ["1st", "2nd", "3rd", "4th", "5th"];
-		let position = document.querySelector(".rank span");
+		let position = document.querySelector("#individualRank span");
 
 		setTimeout(function() {
 	
@@ -53,9 +54,9 @@ class AutoUpdate {
 
 					var increasePosition = Math.floor(Math.random() * 10) + 1;
 					if(increasePosition > 5) {						
-						if(this.currentPos > 0) {
-							this.currentPos--;
-							position.innerHTML = positions[this.currentPos];							
+						if(this.currentIndividualPos > 0) {
+							this.currentIndividualPos--;
+							position.innerHTML = positions[this.currentIndividualPos];							
 						}
 					} 
 
@@ -65,9 +66,9 @@ class AutoUpdate {
 			else {
 				var decreasePosition = Math.floor(Math.random() * 10) + 1;
 				if(decreasePosition > 5) {
-					if(this.currentPos < positions.length - 1) {					
-						this.currentPos++;
-						position.innerHTML = positions[this.currentPos];
+					if(this.currentIndividualPos < positions.length - 1) {					
+						this.currentIndividualPos++;
+						position.innerHTML = positions[this.currentIndividualPos];
 						
 					}
 				} 
@@ -82,9 +83,9 @@ class AutoUpdate {
 
 	updateTeamStats() {
 
-		let random = Math.floor(Math.random() * 5000) + 1;	
+		let random = Math.floor(Math.random() * 1500) + 1;	
 		let positions = ["1st", "2nd", "3rd", "4th", "5th"];
-		let position = document.querySelector(".rank span");
+		let position = document.querySelector("#teamRank span");
 
 		setTimeout(function() {
 	
@@ -113,12 +114,13 @@ class AutoUpdate {
 					this.warrantiesToday.innerHTML = ws;
 					this.warrantiesThisWeek.innerHTML = Number(this.warrantiesThisWeek.innerHTML) + wSold;	
 					this.dashboard.updateBoxState(ws, Number(this.warrantiesLastWeek.innerHTML), this.warrantiesLastWeek.parentNode);
-
+					console.log("increase team position?");
 					var increasePosition = Math.floor(Math.random() * 10) + 1;
 					if(increasePosition > 5) {						
-						if(this.currentPos > 0) {
-							this.currentPos--;
-							position.innerHTML = positions[this.currentPos];							
+						if(this.currentTeamPos > 0) {
+							this.currentTeamPos--;
+							position.innerHTML = positions[this.currentTeamPos];	
+							console.log("increase team position");						
 						}
 					} 
 
@@ -126,11 +128,13 @@ class AutoUpdate {
 		
 			}		
 			else {
+				console.log("decrease team position??");
 				var decreasePosition = Math.floor(Math.random() * 10) + 1;
 				if(decreasePosition > 5) {
-					if(this.currentPos < positions.length - 1) {					
-						this.currentPos++;
-						position.innerHTML = positions[this.currentPos];
+					if(this.currentTeamPos < positions.length - 1) {					
+						this.currentTeamPos++;
+						position.innerHTML = positions[this.currentTeamPos];
+						console.log("decrease team position");
 						
 					}
 				} 
