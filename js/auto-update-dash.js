@@ -28,10 +28,10 @@ class AutoUpdate {
 			this.callsThisWeek.innerHTML = Number(this.callsThisWeek.innerHTML) + 1;
 
 			var sale = Math.floor(Math.random() * 10) + 1;
-			var st = Number(this.salesToday.innerHTML)
-			if(sale > 5) {
+			var st = Number(this.salesToday.innerHTML);			
+			if(sale > 6) {
 				
-				var sold = Math.floor(Math.random() * 3) + 1;
+				var sold = 1;
 				st += sold;
 				this.salesToday.innerHTML = st;
 				this.salesThisWeek.innerHTML = Number(this.salesThisWeek.innerHTML) + sold;
@@ -39,7 +39,7 @@ class AutoUpdate {
 				var warrantiesSold = Math.floor(Math.random() * 20) + 1;
 				var ws = Number(this.warrantiesToday.innerHTML);
 				if(warrantiesSold > 15) {
-					var wSold = Math.floor(Math.random() * 3) + 1
+					var wSold = 1
 					ws += wSold; 
 					this.warrantiesToday.innerHTML = ws;
 					this.warrantiesThisWeek.innerHTML = Number(this.warrantiesThisWeek.innerHTML) + wSold;
