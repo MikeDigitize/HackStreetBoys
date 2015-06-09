@@ -18,14 +18,25 @@ html {
 
 body {
     background-color: $grey;
-    padding: 0;
-    margin: 0;
 }
 
 #salesApp {
     text-align: center;
     color: white;
     line-height: 1;
+}
+
+#login {
+    text-align: left;
+    color: white;
+    line-height: 1;
+}
+
+.login {
+    h1 {
+        font-family: $aoFont;
+        @include font-size(50);
+    }
 }
 
 .row {
@@ -40,6 +51,7 @@ body {
     }
     .playerName {
         @include font-size(60);
+        color: #c6c6c8;
         margin-top: -15px;
         margin-bottom: 25px;
     }
@@ -83,7 +95,7 @@ body {
 .podTitles {
     margin-bottom: 10px;
     font-family: arial;
-    @include font-size(20);
+    @include font-size(30);
 }
 
 .largeNumber {
@@ -106,4 +118,39 @@ body {
 
 .green {
     background-color: $green;
+}
+
+.team {
+    margin-top: 100px;
+}
+
+.car {
+    img {
+        height: 250px;
+        width: auto;
+    }
+}
+
+.powerUps {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.powerLabel {
+    margin-top: 40px;
+    @include font-size(30);
+    text-align: left;
+}
+
+.power {
+    padding-left: 0;
+    list-style-type: none;
+    li {
+        display: inline;
+        padding: 10px;
+        img {
+            width: 90px;
+            height: auto;
+        }
+    }
 }

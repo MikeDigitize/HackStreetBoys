@@ -87,41 +87,40 @@ function insertUsers(database) {
 
 function insertCalls(database) {
 	var calls = [{
-		callerId: null,
 		caller: "Niall Hanlon",
 		warrentyQty: 0,
 		productQty: 0,
-		datestamp: "Tue Jun 09 2015 11:44:41"
+		datestamp: new Date("2015-06-09T10:15:00.000Z")
 	}, {
 		callerId: null,
 		caller: "Niall Hanlon",
 		warrentyQty: 1,
 		productQty: 1,
-		datestamp: "Tue Jun 09 2015 11:50:40"
+		datestamp: new Date("2015-06-09T10:50:00.000Z")
 	}, {
 		callerId: null,
 		caller: "Kobi Thompson",
 		warrentyQty: 1,
 		productQty: 1,
-		datestamp: "Tue Jun 09 2015 10:10:15"
+		datestamp: new Date("2015-06-09T10:39:00.000Z")
 	}, {
 		callerId: null,
 		caller: "Kobi Thompson",
 		warrentyQty: 1,
 		productQty: 1,
-		datestamp: "Tue Jun 09 2015 10:20:10"
+		datestamp: new Date("2015-06-09T10:20:00.000Z")
 	}, {
 		callerId: null,
 		caller: "Kobi Thompson",
 		warrentyQty: 1,
 		productQty: 1,
-		datestamp: "Tue Jun 09 2015 10:350:45"
+		datestamp: new Date("2015-06-09T10:35:00.000Z")
 	}, {
 		callerId: null,
 		caller: "Kobi Thompson",
 		warrentyQty: 1,
 		productQty: 1,
-		datestamp: "Tue Jun 09 2015 10:43:23"
+		datestamp: new Date("2015-06-09T10:43:00.000Z")
 	}];
 
 	database.calls.insert(calls, function(e, record) {
