@@ -24,6 +24,9 @@ body {
     text-align: center;
     color: white;
     line-height: 1;
+    h1 {
+        line-height: 0.9;
+    }
 }
 
 #login {
@@ -40,7 +43,7 @@ body {
 }
 
 .row {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .headerPlayer {
@@ -48,11 +51,12 @@ body {
     font-family: $aoFont;
     h1, h2 {
         font-weight: 600;
+        margin: 0;
     }
     .playerName {
         @include font-size(40);
         color: #c6c6c8;
-        margin-top: -15px;
+        margin-top: -5px;
         margin-bottom: 10px;
     }
     .rank {
@@ -93,18 +97,20 @@ body {
 }
 
 .headerTeam {
+    padding-top: 5px;
     background-color: $grey;
     font-family: $aoFont;
     h1, h2 {
         font-weight: 600;
+        margin: 0;
     }
     .teamName {
-        @include font-size(30);
+        @include font-size(25);
         color: #c6c6c8;
-        margin-top: -15px;
         margin-bottom: 10px;
     }
     .rank {
+        margin-top: 10px;
         display: inline-block;
         position: relative;
         @include font-size(80);
@@ -122,7 +128,7 @@ body {
 
 .largeNumber {
     font-family: $aoFont;
-    @include font-size(40);
+    @include font-size(55);
     font-weight: 600;
     padding: 0;
 }
@@ -130,7 +136,7 @@ body {
 .smallNumber {
     margin-bottom: 2px;
     font-family: $aoFont;
-    @include font-size(15);
+    @include font-size(20);
     font-weight: 600;
     text-align: right;
     padding: 0;
@@ -146,9 +152,7 @@ body {
     padding: 6px;
 }
 
-.team {
-    
-}
+.team {}
 
 .car {
     img {
@@ -165,6 +169,7 @@ body {
 .powerLabel {
     margin-top: 8px;
     padding-right: 0;
+    font-family: arial;
     @include font-size(15);
     text-align: left;
 }
