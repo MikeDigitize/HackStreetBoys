@@ -1,4 +1,5 @@
-var Staff = require('./staff.js');
+var Staff = require('./staff.js'),
+	Manager = require('./manager.js');
 
 function socketStart(io, database, verify) {
 
@@ -7,10 +8,26 @@ function socketStart(io, database, verify) {
 		var id = socket.id;
 	    io.to(socket.id).emit("userid", socket.id);
 
-	    // send Nialls stats as an example
-	    var Niall = new Staff('Niall Hanlon', database);
-	    Niall.getCalls(new Date(), function(calls) {
-	    	io.to(socket.id).emit("numCalls", calls.length);
+	    var Niall = new Staff("Niall Hanlon", database);
+
+	    // NIALL'S MANAGER
+		Niall.getManagerName(function(name) {
+			var NiallsManager = new Manager(name, database);
+		});
+	    
+	    // CALLS FOR NIALL
+	    Niall.getCallData(function(data) {
+	    	io.to(socket.id).emit("numCalls", data);
+	    });
+
+	    // SALES FOR NIALL
+	    Niall.getSaleData(function(data) {
+	    	io.to(socket.id).emit("numSales", data);
+	    });
+
+	    // WARRENTY SALES FOR NIALL
+	    Niall.getWarrentyData(function(data) {
+	    	io.to(socket.id).emit("numWarrenty", data);
 	    });
 
 	    socket.on("verify-login", function(data){
