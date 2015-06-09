@@ -18,7 +18,6 @@ html {
 
 body {
     background-color: $grey;
-    margin: 0;
 }
 
 #salesApp {
@@ -93,6 +92,28 @@ body {
     }
 }
 
+.headerTeam {
+    background-color: $grey;
+    font-family: $aoFont;
+    h1, h2 {
+        font-weight: 600;
+    }
+    .teamName {
+        @include font-size(30);
+        color: #c6c6c8;
+        margin-top: -15px;
+        margin-bottom: 10px;
+    }
+    .rank {
+        display: inline-block;
+        position: relative;
+        @include font-size(80);
+        span {
+            @include font-size(60);
+        }
+    }
+}
+
 .podTitles {
     margin-bottom: 10px;
     font-family: arial;
@@ -126,38 +147,37 @@ body {
 }
 
 .team {
-    margin-top: 100px;
+    
 }
 
 .car {
     img {
-        height: 100px;
+        height: 110px;
         width: auto;
     }
 }
 
 .powerUps {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
     text-align: left;
 }
 
 .powerLabel {
-    margin-top: 15px;
+    margin-top: 8px;
     padding-right: 0;
-    @include font-size(30);
+    @include font-size(15);
     text-align: left;
 }
 
 .power {
-    margin-left: -75px;
+    margin-left: -30px;
     list-style-type: none;
     li {
         display: inline-block;
         padding: 0;
-        width: 80px;
+        width: 40px;
         img {
-            width: 100px;
+            width: 50px;
             height: auto;
         }
     }
