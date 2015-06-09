@@ -112,6 +112,26 @@ Staff.prototype.getManagerName = function(callback) {
 	}
 };
 
+Staff.prototype.getAllData = function(callback) {
+	if (typeof callback === 'function') {
+		var staffData = {};
+
+		this.getCallData(function(data) {
+			staffData['call'] = data;
+
+			this.getSaleData(function(data) {
+				staffData['sale'] = data;
+
+				this.getWarrentyData(function(data) {
+					staffData['warrenty'] = data;
+
+					callback(staffData);
+				});
+			}.bind(this));
+		}.bind(this));
+	}
+}
+
 // Dashboard - calls
 Staff.prototype.getCallData = function(callback) {
 	if (typeof callback === 'function') {
@@ -184,16 +204,16 @@ Staff.prototype.getSaleData = function(callback) {
 		var data = {};
 
 		this.getTodaysSaleCalls(function(today) {
-			data['today'] = today.length;
+			data['today'] = today;
 
 			this.getLastWeeksDaySaleCalls(function(lastWeekDay) {
-				data['lastWeekDay'] = lastWeekDay.length;
+				data['lastWeekDay'] = lastWeekDay;
 
 				this.getWoWSaleCalls(function(wow) {
-					data['wow'] = wow.length;
+					data['wow'] = wow;
 
 					this.getLastWeeksWoWSaleCalls(function(lastWeekWow) {
-						data['lastWeekWow'] = lastWeekWow.length;
+						data['lastWeekWow'] = lastWeekWow;
 
 						callback(data);
 					});
@@ -205,7 +225,15 @@ Staff.prototype.getSaleData = function(callback) {
 
 Staff.prototype.getTodaysSaleCalls = function(callback) {
 	if (typeof callback === 'function') {
-		this.getSaleCalls(new Date(), callback);
+		this.getSaleCalls(new Date(), function(calls) {
+			var totalSold = 0;
+
+			for (var i = 0; i < calls.length; i++) {
+				totalSold += calls[i].productQty;
+			}
+
+			callback(totalSold);
+		});
 	}
 };
 
@@ -214,7 +242,15 @@ Staff.prototype.getLastWeeksDaySaleCalls = function(callback) {
 		var weekAgo = new Date();
 			weekAgo = weekAgo.setDate(weekAgo.getDate() - 7);
 
-		this.getSaleCalls(new Date(weekAgo), callback);
+		this.getSaleCalls(new Date(weekAgo), function(calls) {
+			var totalSold = 0;
+
+			for (var i = 0; i < calls.length; i++) {
+				totalSold += calls[i].productQty;
+			}
+
+			callback(totalSold);
+		});
 	}
 };
 
@@ -227,7 +263,15 @@ Staff.prototype.getWoWSaleCalls = function(callback) {
 		var wowEnd = new Date();
 			wowEnd = new Date(wowEnd.setDate(wowStart.getDate() + 6)); // end date is start + 6 days
 
-		this.getSaleCalls([wowStart, wowEnd], callback);
+		this.getSaleCalls([wowStart, wowEnd], function(calls) {
+			var totalSold = 0;
+
+			for (var i = 0; i < calls.length; i++) {
+				totalSold += calls[i].productQty;
+			}
+
+			callback(totalSold);
+		});
 	}
 };
 
@@ -240,7 +284,15 @@ Staff.prototype.getLastWeeksWoWSaleCalls = function(callback) {
 		var wowEnd = new Date();
 			wowEnd = new Date(wowEnd.setDate(wowStart.getDate() + 6)); // end date is start + 6 days
 
-		this.getSaleCalls([wowStart, wowEnd], callback);
+		this.getSaleCalls([wowStart, wowEnd], function(calls) {
+			var totalSold = 0;
+
+			for (var i = 0; i < calls.length; i++) {
+				totalSold += calls[i].productQty;
+			}
+
+			callback(totalSold);
+		});
 	}
 };
 
@@ -250,16 +302,16 @@ Staff.prototype.getWarrentyData = function(callback) {
 		var data = {};
 
 		this.getTodaysWarrentyCalls(function(today) {
-			data['today'] = today.length;
+			data['today'] = today;
 
 			this.getLastWeeksDayWarrentyCalls(function(lastWeekDay) {
-				data['lastWeekDay'] = lastWeekDay.length;
+				data['lastWeekDay'] = lastWeekDay;
 
 				this.getWoWWarrentyCalls(function(wow) {
-					data['wow'] = wow.length;
+					data['wow'] = wow;
 
 					this.getLastWeeksWoWWarrentyCalls(function(lastWeekWow) {
-						data['lastWeekWow'] = lastWeekWow.length;
+						data['lastWeekWow'] = lastWeekWow;
 
 						callback(data);
 					});
@@ -271,7 +323,15 @@ Staff.prototype.getWarrentyData = function(callback) {
 
 Staff.prototype.getTodaysWarrentyCalls = function(callback) {
 	if (typeof callback === 'function') {
-		this.getWarrentyCalls(new Date(), callback);
+		this.getWarrentyCalls(new Date(), function(calls) {
+			var totalSold = 0;
+
+			for (var i = 0; i < calls.length; i++) {
+				totalSold += calls[i].warrentyQty;
+			}
+
+			callback(totalSold);
+		});
 	}
 };
 
@@ -280,7 +340,15 @@ Staff.prototype.getLastWeeksDayWarrentyCalls = function(callback) {
 		var weekAgo = new Date();
 			weekAgo = weekAgo.setDate(weekAgo.getDate() - 7);
 
-		this.getWarrentyCalls(new Date(weekAgo), callback);
+		this.getWarrentyCalls(new Date(weekAgo), function(calls) {
+			var totalSold = 0;
+
+			for (var i = 0; i < calls.length; i++) {
+				totalSold += calls[i].warrentyQty;
+			}
+
+			callback(totalSold);
+		});
 	}
 };
 
@@ -293,7 +361,15 @@ Staff.prototype.getWoWWarrentyCalls = function(callback) {
 		var wowEnd = new Date();
 			wowEnd = new Date(wowEnd.setDate(wowStart.getDate() + 6)); // end date is start + 6 days
 
-		this.getWarrentyCalls([wowStart, wowEnd], callback);
+		this.getWarrentyCalls([wowStart, wowEnd], function(calls) {
+			var totalSold = 0;
+
+			for (var i = 0; i < calls.length; i++) {
+				totalSold += calls[i].warrentyQty;
+			}
+
+			callback(totalSold);
+		});
 	}
 };
 
@@ -306,7 +382,15 @@ Staff.prototype.getLastWeeksWoWWarrentyCalls = function(callback) {
 		var wowEnd = new Date();
 			wowEnd = new Date(wowEnd.setDate(wowStart.getDate() + 6)); // end date is start + 6 days
 
-		this.getWarrentyCalls([wowStart, wowEnd], callback);
+		this.getWarrentyCalls([wowStart, wowEnd], function(calls) {
+			var totalSold = 0;
+
+			for (var i = 0; i < calls.length; i++) {
+				totalSold += calls[i].warrentyQty;
+			}
+
+			callback(totalSold);
+		});
 	}
 };
 
