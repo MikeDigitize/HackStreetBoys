@@ -1,4 +1,3 @@
-import Awesome from "./awesome";
 import Login from "./login";
 import Socket from "./sockets";
 
