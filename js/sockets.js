@@ -1,9 +1,14 @@
 class Sockets {
 	
 	constructor() {		
-		let socket = io();       
+		let socket = io();
+		
         socket.on("userid", this.setSocketId.bind(this));
+
         socket.on("numCalls", this.logCalls.bind(this));
+        socket.on("numSales", this.logCalls.bind(this));
+        socket.on("numWarrenty", this.logCalls.bind(this));
+
         this.events = [];
 	}
 
@@ -15,8 +20,8 @@ class Sockets {
 		return this.socketid;
 	}
 
-	logCalls(num) {
-		console.log("numCalls", num);
+	logCalls(data) {
+		console.log(data);
 	}
 
 	send(name, data) {
