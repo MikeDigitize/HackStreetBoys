@@ -1,18 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Game</title>
-</head>
-<body>
 
-<script src="/socket.io/socket.io.js"></script>
-<script type="text/javascript" src="js/root.min.js"></script>
-<script type="text/javascript" src="js/animator.min.js"></script>
-<script type="text/javascript">
-	var socket = io();
-	socket.on("userid", function(data) {
-	    console.log("socket id", data);
-	});
-</script>
+<head>
+    <title>Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <main id="aoGame">
+        <div class="gameBoard">
+            <div class="track">
+                <div class="car">
+                    <img src="images/car-red.png" style="margin-left: 5px">
+                </div>
+            </div>
+            <div class="track">
+                <div class="car">
+                    <img src="images/car-red.png" style="margin-left: 25px">
+                </div>
+            </div>
+            <div class="track">
+                <div class="car">
+                    <img src="images/car-red.png" style="margin-left: 50px">
+                </div>
+            </div>
+            <div class="track">
+                <div class="car">
+                    <img src="images/car-red.png" style="margin-left: 75px">
+                </div>
+            </div>
+            <div class="track">
+                <div class="car">
+                    <img src="images/car-red.png" style="margin-left: 15px">
+                </div>
+            </div>
+        </div>
+        <div class="leaderBoard"></div>
+    </main>
+    <!--@NOTE Scripts below here...-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="js/root.min.js"></script>
+    <script type="text/javascript" src="js/animator.min.js"></script>
+    <script type="text/javascript">
+        var socket = io();
+        socket.on("userid", function (data) {
+            console.log("socket id", data);
+        });
+    </script>
 </body>
+
 </html>
