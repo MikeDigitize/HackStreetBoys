@@ -51,17 +51,17 @@ body {
         font-weight: 600;
     }
     .playerName {
-        @include font-size(60);
+        @include font-size(40);
         color: #c6c6c8;
         margin-top: -15px;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
     }
     .rank {
         display: inline-block;
         position: relative;
-        @include font-size(150);
+        @include font-size(100);
         span {
-            @include font-size(130);
+            @include font-size(70);
         }
         .alertIcon {
             display: block;
@@ -96,29 +96,33 @@ body {
 .podTitles {
     margin-bottom: 10px;
     font-family: arial;
-    @include font-size(30);
+    @include font-size(15);
 }
 
 .largeNumber {
     font-family: $aoFont;
-    @include font-size(170);
+    @include font-size(40);
     font-weight: 600;
+    padding: 0;
 }
 
 .smallNumber {
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     font-family: $aoFont;
-    @include font-size(50);
+    @include font-size(15);
     font-weight: 600;
     text-align: right;
+    padding: 0;
 }
 
 .red {
     background-color: $red;
+    padding: 6px;
 }
 
 .green {
     background-color: $green;
+    padding: 6px;
 }
 
 .team {
@@ -127,30 +131,33 @@ body {
 
 .car {
     img {
-        height: 250px;
+        height: 100px;
         width: auto;
     }
 }
 
 .powerUps {
     margin-top: 15px;
+    margin-bottom: 15px;
     text-align: left;
 }
 
 .powerLabel {
-    margin-top: 40px;
+    margin-top: 15px;
+    padding-right: 0;
     @include font-size(30);
     text-align: left;
 }
 
 .power {
-    padding-left: 0;
+    margin-left: -75px;
     list-style-type: none;
     li {
-        display: inline;
-        padding: 10px;
+        display: inline-block;
+        padding: 0;
+        width: 80px;
         img {
-            width: 90px;
+            width: 100px;
             height: auto;
         }
     }
