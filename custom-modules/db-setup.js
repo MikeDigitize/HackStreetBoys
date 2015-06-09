@@ -124,7 +124,7 @@ function insertCalls(database) {
 	}];
 
 	database.calls.insert(calls, function(e, record) {
-		console.log("database successfully iniitialised")
+		console.log("database successfully initialised");
 	});
 }
 
