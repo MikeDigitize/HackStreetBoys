@@ -12,11 +12,17 @@ server.listen(1337);
 app.use(express.static(__dirname + "/public" ));
 
 /**
+  *	Listen for user logins
+  */
+
+var verify = require("./custom-modules/db-authentication.js");
+
+/**
   *	Listen for socket comnmunication
   */
 
 var sockets = require("./custom-modules/sockets.js");
-sockets(io, db);
+sockets(io, db, verify);
 
 /**
   *	Set up the database with dummy data if it's not already there
@@ -24,3 +30,4 @@ sockets(io, db);
 
 var dbSetup = require("./custom-modules/db-setup.js");
 dbSetup(db);
+

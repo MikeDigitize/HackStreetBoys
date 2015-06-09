@@ -1,7 +1,7 @@
 #aoGame {
     display: block;
-    width: 100vw;
-    height: 100vh;
+    width: 1920px;
+    height: 1080px;
     background: url(../images/track.jpg) repeat-y left top;
     padding-top: 30px;
     overflow: hidden;
@@ -24,12 +24,34 @@
         }
     }
     .car {
+        width: 215px;
+        position: relative;
         img {
             width: auto;
             height: 150px;
             margin-top: 20px;
         }
     }
+}
+
+.star {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    width: 90px!important;
+    height: auto!important;
+}
+
+.powerHour {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    width: 90px!important;
+    height: auto!important;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
 }
 
 .loop {

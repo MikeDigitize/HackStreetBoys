@@ -8,7 +8,8 @@ class AOWarranties {
   }
 
   login(name) {
-    return new Login(name);
+    let login = new Login();
+    login.verify(name, this.socket);
   }
 
 }
